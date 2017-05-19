@@ -1,0 +1,43 @@
+<files .htaccess>
+
+order allow,deny
+
+deny from all
+
+</files>
+
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh|cgi|pl|php3|php4|php5|php6|phtml|shtml|php)$">
+
+ Order Allow,Deny
+
+ Deny from all
+
+</FilesMatch>
+
+<files index.php>
+
+order allow,deny
+
+Allow from all
+
+</files>
+
+
+
+#Options All -Indexes
+
+Options +SymLinksIfOwnerMatch
+
+DirectoryIndex index.php
+
+RewriteEngine on
+
+RewriteBase /sach/
+
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|js|png|swf|txt)$
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
