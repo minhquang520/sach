@@ -44,7 +44,6 @@
             {/if}
 
         </div>
-
         <div class="panel-body no-padding">
             {form_open(current_url(), 'method="POST"')}
                 <div class="form-body">
@@ -53,7 +52,7 @@
                         {$Input_TenDanhMuc = [
                         'name' => 'TenDanhMuc',
                         'id' => 'TenDanhMuc',
-                        'value' => set_value('TenDanhMuc'),
+                        'value' => $DanhMuc->TenDanhMuc,
                         'class' => 'form-control',
                         'type' => 'text']}
                         {form_input($Input_TenDanhMuc)}
@@ -65,20 +64,20 @@
                         {$Input_DanhMuc = [
                         'id' => 'MaDanhMucCha',
                         'class' => 'form-control input-sm mb-15']}  
-                        {form_dropdown('MaDanhMucCha',$dsDanhMuc, set_value('MaDanhMucCha'),$Input_DanhMuc)}
+                        {form_dropdown('MaDanhMucCha',$dsDanhMuc, $DanhMuc->MaDanhMucCha,$Input_DanhMuc)}
 
                     </div><!-- /.form-group -->
 
                     <div class="form-group">
                         <label class="control-label" for="readonlyinput1">Slug</label>
-                        <input value="" id="slug" class="form-control" readonly="readonly" type="text">
+                        <input id="slug" value="{$DanhMuc->Slug}" class="form-control" readonly="readonly" type="text">
                     </div><!-- /.form-group -->
 
                 </div><!-- /.form-body -->
                 <div class="form-footer">
                     <div class="pull-left">
                         <button class="btn btn-success" type="submit">Submit</button>
-                        <a href="{base_url('quanly/danhmuc')}" class="btn btn-danger mr-5">Cancel</a>
+                        <button class="btn btn-danger mr-5">Cancel</button>
                     </div>
                     <div class="clearfix"></div>
                 </div><!-- /.form-footer -->

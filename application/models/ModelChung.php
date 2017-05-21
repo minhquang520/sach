@@ -47,12 +47,20 @@
 		    }
 		    return FALSE;
 		}
-
+		public function CapNhat($id, $data) {
+	    	if (!$id)
+		    {
+		        return FALSE;
+		    }
+		    $where = array();
+		    $where['id'] = $id; 
+        	return $this->update_rule($where, $data);
+	    }
 		/**
 		* Cap nhat row tu dieu kien
 		* $where: điều kiện
 		*/
-		function update_rule($where, $data)
+		public function update_rule($where, $data)
 		{
 		    if (!$where)
 		    {
@@ -74,15 +82,7 @@
 				return FALSE; 
 			}
 		}
-	    public function CapNhat($id, $data) {
-	    	if (!$id)
-		    {
-		        return FALSE;
-		    }
-		    $where = array();
-		    $where['id'] = $id; 
-        	return $this->update_rule($where, $data);
-	    }
+	    
 	    /**
 		*Xoa row tu id
 		*/
@@ -117,11 +117,6 @@
 		    $this->db->where($where);//thêm điều kiện
 		    if($this->db->delete($this->table))//thực hiện xóa
 		    {
-		    	if(file_exists('./uploads/'.$row->Hinh))
-		    		unlink('./uploads/'.$row->Hinh);
-		    	if(file_exists('./uploads/'.$row->HinhNho))
-		    		unlink('./uploads/'.$row->HinhNho);
-		    	
 		        return TRUE;
 		    }
 		    return FALSE;

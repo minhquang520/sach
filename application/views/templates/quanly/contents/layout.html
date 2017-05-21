@@ -71,6 +71,45 @@
     <script src="{base_url('assets/global/plugins/bower_components/respond-minmax/dest/respond.min.js')}"></script>
     <![endif]-->
     <!--/ END IE SUPPORT -->
+
+
+    <!-- Slowly loading -->
+    
+    <!-- START @CORE PLUGINS -->
+    <script src="{base_url('assets/global/plugins/bower_components/jquery/dist/jquery.min.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/jquery-cookie/jquery.cookie.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/bootstrap/dist/js/bootstrap.min.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/typehead.js/dist/handlebars.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/typehead.js/dist/typeahead.bundle.min.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/jquery-nicescroll/jquery.nicescroll.min.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/jquery.sparkline.min/index.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/jquery-easing-original/jquery.easing.1.3.min.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/ionsound/js/ion.sound.min.js')}"></script>
+    <script src="{base_url('assets/global/plugins/bower_components/bootbox/bootbox.js')}"></script>
+    <!--/ END CORE PLUGINS -->
+
+    <!-- START @PAGE LEVEL PLUGINS -->
+    <!-- CDN -->
+    {if isset($list_js_cdn)}
+        {foreach from=$list_js_cdn item=list_js}
+        <script src="{$list_js}"></script>
+        {/foreach}
+    {/if}
+
+    {if isset($list_js_plugin)}
+        {foreach from=$list_js_plugin item=list_js}
+            <script src="{base_url('assets/global/plugins/bower_components/'|cat:$list_js)}"></script>
+        {/foreach}
+    {/if}
+
+    {if isset($list_js_commercial)}
+        {foreach from=$list_js_commercial item=list_js}
+        <script src="{base_url('assets/commercial/plugins/'|cat:$list_js)}"></script>
+        {/foreach}
+    {/if}
+    <!--/ END PAGE LEVEL PLUGINS -->
+
+    <!-- End -->
 </head>
 <!--/ END HEAD -->
 
@@ -157,50 +196,25 @@ START @BODY
 <!--/ END BACK TOP -->
 
 <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
-<!-- START @CORE PLUGINS -->
-<script src="{base_url('assets/global/plugins/bower_components/jquery/dist/jquery.min.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/jquery-cookie/jquery.cookie.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/bootstrap/dist/js/bootstrap.min.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/typehead.js/dist/handlebars.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/typehead.js/dist/typeahead.bundle.min.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/jquery-nicescroll/jquery.nicescroll.min.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/jquery.sparkline.min/index.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/jquery-easing-original/jquery.easing.1.3.min.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/ionsound/js/ion.sound.min.js')}"></script>
-<script src="{base_url('assets/global/plugins/bower_components/bootbox/bootbox.js')}"></script>
-<!--/ END CORE PLUGINS -->
+    
 
-<!-- START @PAGE LEVEL PLUGINS -->
-<!-- CDN -->
-{if isset($list_js_cdn)}
-    {foreach from=$list_js_cdn item=list_js}
-    <script src="{$list_js}"></script>
-    {/foreach}
-{/if}
+    
 
-{if isset($list_js_plugin)}
-    {foreach from=$list_js_plugin item=list_js}
-        <script src="{base_url('assets/global/plugins/bower_components/'|cat:$list_js)}"></script>
-    {/foreach}
-{/if}
-
-{if isset($list_js_commercial)}
-    {foreach from=$list_js_commercial item=list_js}
-    <script src="{base_url('assets/commercial/plugins/'|cat:$list_js)}"></script>
-    {/foreach}
-{/if}
-<!--/ END PAGE LEVEL PLUGINS -->
-
-<!-- START @PAGE LEVEL SCRIPTS -->
-<script src="{base_url('assets/admin/js/apps.js')}"></script>
-{if isset($list_js_page)}
-    {foreach from=$list_js_page item=list_js}
-        <script src="{base_url('assets/admin/js/pages/'|cat:$list_js)}"></script>
-    {/foreach}
-{/if}
-<script src="{base_url('assets/admin/js/demo.js')}"></script>
-<!--/ END PAGE LEVEL SCRIPTS -->
-<!--/ END JAVASCRIPT SECTION -->
+    <!-- START @PAGE LEVEL SCRIPTS -->
+    <script src="{base_url('assets/admin/js/apps.js')}"></script>
+    {if isset($list_js_page)}
+        {foreach from=$list_js_page item=list_js}
+            <script src="{base_url('assets/admin/js/pages/'|cat:$list_js)}"></script>
+        {/foreach}
+    {/if}
+    <script src="{base_url('assets/admin/js/demo.js')}"></script>
+    <!--/ END PAGE LEVEL SCRIPTS -->
+    <!--/ END JAVASCRIPT SECTION -->
+    {if isset($custom_script)}
+    <script type="text/javascript">
+        {$custom_script}
+    </script>
+    {/if}
 
 {literal}
 <!-- START GOOGLE ANALYTICS -->
