@@ -1,32 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class DanhMuc extends Admin_Controller {
-
+class TacGia extends Admin_Controller {
 	public function __construct(){
-        parent::__construct();
-        $this->load->database();
-        $this->load->model('ModelChung');
-        $this->ModelChung->set_table('DanhMuc');
-    }
+		parent:: __construct();
+		$this->load->database();
+		$this->load->model('ModelChung');
+        $this->ModelChung->set_table('TacGia');
+	}
+	public function index(){
 
-    public function  index() {
-
-        // Get list từ modelchung
-        $tempDanhMuc = $this->ModelChung->get_list();
-        $dsDanhMuc = array();
-        $dsDanhMuc[-1] = "Không có";
-        foreach ($tempDanhMuc as $key => $value) {
-            $dsDanhMuc[$value->id] = $value->TenDanhMuc;
-        }
-        foreach ($tempDanhMuc as $key => $value) {
-            if($tempDanhMuc[$key]->MaDanhMucCha == -1) {
-                $tempDanhMuc[$key]->TenDanhMucCha = 'Không có';
-            }
-            else {
-                $tempDanhMuc[$key]->TenDanhMucCha = $dsDanhMuc[$value->MaDanhMucCha];
-            }
-        }
-        $this->smartyci->assign('danhsach', $tempDanhMuc);
+ 		// Get list từ modelchung
+        $dsTacGia = $this->ModelChung->get_list();
+        $this->smartyci->assign('danhsach', $dsTacGia);
 
         // Set title page
         $this->smartyci->assign('title', 'DATATABLE');
@@ -55,7 +40,7 @@ class DanhMuc extends Admin_Controller {
         $this->smartyci->assign('list_js_page',$js_page);
 
         // Set content page
-        $this->smartyci->assign('body', 'quanly/contents/DanhMuc/DanhSach.html');
+        $this->smartyci->assign('body', 'quanly/contents/TacGia/DanhSach.html');
 
         // Set active menu
         $this->smartyci->assign('active_tables', 'active');
@@ -63,37 +48,22 @@ class DanhMuc extends Admin_Controller {
 
         // Render view on main layout
         $this->smartyci->display('quanly/contents/layout.html');
-    }
+	}
 
-    public function TaoMoi() {
-        // Thư vien form validation
-        $this->load->library('form_validation');
-        // Load helper form hỗ trợ cho việc xử lý form kết hợp với form validation
+	public function TaoMoi() {
+		// load tới thư viện
+		$this->load->library('form_validation');
 
-        // Set rules đã được tự động load ở application/config
-        if($this->form_validation->run('DanhMuc') == TRUE) {
-        	//echo "OK";
-            $data = array(
-                'TenDanhMuc' => $this->input->post('TenDanhMuc'),
-                'MaDanhMucCha' => $this->input->post('MaDanhMucCha'),
-                'Slug' => url_title($this->ModelChung->toASCII($this->input->post('TenDanhMuc')), 'dash', true)
-                );
-            $this->ModelChung->TaoMoi($data);
-            redirect(base_url('quanly/DanhMuc/'));
+		if($this->form_validation->run('TacGia') == true){
+			$data = array(
+				'TenTacGia' => $this->input->post('TenTacGia'),
+				'Slug' => url_title($this->ModelChung->toASCII($this->input->post('TenTacGia')),'dash',true)
+			);
+			$this->ModelChung->TaoMoi($data);
+			redirect('quanly/TacGia');
 		}
-
-		$dsDanhMuc = array();
-
-        // Model Load Danh sách danh mục
-        $dsDanhMuc[-1] = "Không có";
-        foreach ($this->ModelChung->get_list() as $key => $value) {
-        	$dsDanhMuc[$value->id] = $value->TenDanhMuc;
-        }
-        // Tạo 1 biến cho View dựa vào giá trị của biến $dsDanhMuc
-        $this->smartyci->assign('dsDanhMuc',$dsDanhMuc);
-
-    	// Set title page
-        $this->smartyci->assign('title', 'Tạo mới danh mục');
+		// Set title page
+        $this->smartyci->assign('title', 'Tạo Mới Tác Giả');
 
         // Set CSS plugins
         $css_plugin = array(
@@ -113,6 +83,12 @@ class DanhMuc extends Admin_Controller {
             'chosen_v1.2.0/chosen.jquery.min.js'
         );
         $this->smartyci->assign('list_js_plugin',$js_plugin);
+
+        // Set JS page
+        $js_page = array(
+            'blankon.form.element.js'
+        );
+        $this->smartyci->assign('list_js_page',$js_page);
 
         // Set Custom Script
         $this->smartyci->assign('custom_script', "
@@ -136,19 +112,14 @@ class DanhMuc extends Admin_Controller {
 
                     return text;
                 }
-                $('#TenDanhMuc').on('keydown keyup blur focusout change keypress',function(){
-                    $('#slug').val(generateAlias($('#TenDanhMuc').val()));
+                $('#TenTacGia').on('keydown keyup blur focusout change keypress',function(){
+                    $('#slug').val(generateAlias($('#TenTacGia').val()));
                 });
             });
         ");
 
-        // Set JS page
-        $js_page = array(
-            'blankon.form.element.js'
-        );
-        $this->smartyci->assign('list_js_page',$js_page);
         // Set content page
-        $this->smartyci->assign('body', 'quanly/contents/DanhMuc/TaoMoi.html');
+        $this->smartyci->assign('body', 'quanly/contents/TacGia/TaoMoi.html');
 
         // Set active menu
         $this->smartyci->assign('active_forms', 'active');
@@ -156,44 +127,37 @@ class DanhMuc extends Admin_Controller {
 
         // Render view on main layout
         $this->smartyci->display('quanly/contents/layout.html');
-    }
-    
-    public function ChinhSua($id) {
-        // Thư vien form validation
-        $this->load->library('form_validation');
-        // Load helper form hỗ trợ cho việc xử lý form kết hợp với form validation
-        $this->load->helper();
+	}
 
-        $DanhMuc = $this->ModelChung->get_info($id);
-        if($DanhMuc !== FALSE) {
+	public function Xoa($id){
+		$DanhSach = $this->ModelChung->get_info($id);
+		if($danhsach !==FALSE){
+			$this->ModelChung->delete($id);
+		} 
+		redirect('quanly/tacgia');
+	}
+
+	public function ChinhSua($id){
+		 // Thư vien form validation
+        $this->load->library('form_validation');
+
+        $TacGia = $this->ModelChung->get_info($id);
+        if($TacGia !== FALSE) {
             //
-            $this->smartyci->assign('DanhMuc', $DanhMuc);
+            $this->smartyci->assign('TacGia', $TacGia);
 
             // Set rules đã được tự động load ở application/config
-            if($this->form_validation->run('DanhMuc') == TRUE) {
+            if($this->form_validation->run('TacGia') == TRUE) {
                 $data = array(
-                    'TenDanhMuc' => $this->input->post('TenDanhMuc'),
-                    'MaDanhMucCha' => $this->input->post('MaDanhMucCha'),
-                    'Slug' => url_title($this->ModelChung->toASCII($this->input->post('TenDanhMuc')), 'dash', true)
+                    'TenTacGia' => $this->input->post('TenTacGia'),
+                    'Slug' => url_title($this->ModelChung->toASCII($this->input->post('TenTacGia')), 'dash', true)
                     );
                 $this->ModelChung->CapNhat($id,$data);
-                redirect(base_url('quanly/DanhMuc/'));
+                redirect(base_url('quanly/tacgia/'));
             }
-            
-            $dsDanhMuc = array();
-
-            // Model Load Danh sách danh mục
-            $dsDanhMuc[-1] = "Không có";
-            foreach ($this->ModelChung->get_list() as $key => $value) {
-                // Loai
-                if($value->id != $id)
-                    $dsDanhMuc[$value->id] = $value->TenDanhMuc;
-            }
-            // Tạo 1 biến cho View dựa vào giá trị của biến $dsDanhMuc
-            $this->smartyci->assign('dsDanhMuc',$dsDanhMuc);
 
             // Set title page
-            $this->smartyci->assign('title', 'Chỉnh sửa danh mục');
+            $this->smartyci->assign('title', 'Chỉnh sửa tác giả');
 
             // Set CSS plugins
             $css_plugin = array(
@@ -236,8 +200,8 @@ class DanhMuc extends Admin_Controller {
 
                         return text;
                     }
-                    $('#TenDanhMuc').on('keydown keyup blur focusout change keypress',function(){
-                        $('#slug').val(generateAlias($('#TenDanhMuc').val()));
+                    $('#TenTacGia').on('keydown keyup blur focusout change keypress',function(){
+                        $('#slug').val(generateAlias($('#TenTacGia').val()));
                     });
                 });
             ");
@@ -248,7 +212,7 @@ class DanhMuc extends Admin_Controller {
             );
             $this->smartyci->assign('list_js_page',$js_page);
             // Set content page
-            $this->smartyci->assign('body', 'quanly/contents/DanhMuc/ChinhSua.html');
+            $this->smartyci->assign('body', 'quanly/contents/TacGia/ChinhSua.html');
 
             // Set active menu
             $this->smartyci->assign('active_forms', 'active');
@@ -258,19 +222,7 @@ class DanhMuc extends Admin_Controller {
             $this->smartyci->display('quanly/contents/layout.html');
         }
         else {
-            redirect('quanly/Danhmuc');
+            redirect('quanly/TacGia');
         }
-    }
-
-    public function Xoa($id) {
-        $DanhMuc = $this->ModelChung->get_info($id);
-        if($DanhMuc !== FALSE) {
-            // Khi xóa danh mục cha sẽ sửa các danh mục con thành danh mục cha của danh mục cha của nó
-            $this->ModelChung->update_rule(array('MaDanhMucCha' => $id), array('MaDanhMucCha' => $DanhMuc->MaDanhMucCha));
-            $this->ModelChung->delete($id);
-        }
-        else {
-            redirect('quanly/Danhmuc');
-        }
-    }
+	}
 }
