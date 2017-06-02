@@ -1,17 +1,18 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class TacGia extends Admin_Controller {
+class LoaiTaiNguyen extends Admin_Controller {
 	public function __construct(){
 		parent:: __construct();
 		$this->load->database();
 		$this->load->model('ModelChung');
-        $this->ModelChung->set_table('TacGia');
+        $this->ModelChung->set_table('LoaiTaiNguyen');
 	}
-	public function index(){
 
- 		// Get list từ modelchung
-        $dsTacGia = $this->ModelChung->get_list();
-        $this->smartyci->assign('danhsach', $dsTacGia);
+
+	public function index(){
+		// Get list từ modelchung
+        $dsLoaiTaiNguyen = $this->ModelChung->get_list();
+        $this->smartyci->assign('danhsach', $dsLoaiTaiNguyen);
 
         // Set title page
         $this->smartyci->assign('title', 'DATATABLE');
@@ -40,7 +41,7 @@ class TacGia extends Admin_Controller {
         $this->smartyci->assign('list_js_page',$js_page);
 
         // Set content page
-        $this->smartyci->assign('body', 'quanly/contents/TacGia/DanhSach.html');
+        $this->smartyci->assign('body', 'quanly/contents/LoaiTaiNguyen/DanhSach.html');
 
         // Set active menu
         $this->smartyci->assign('active_tables', 'active');
@@ -50,20 +51,19 @@ class TacGia extends Admin_Controller {
         $this->smartyci->display('quanly/contents/layout.html');
 	}
 
-	public function TaoMoi() {
-		// load tới thư viện
+	public function TaoMoi(){
+
 		$this->load->library('form_validation');
 
-		if($this->form_validation->run('TacGia') == true){
+		if($this->form_validation->run('LoaiTaiNguyen') == true){
 			$data = array(
-				'TenTacGia' => $this->input->post('TenTacGia'),
-				'Slug' => url_title($this->ModelChung->toASCII($this->input->post('TenTacGia')),'dash',true)
+				'TenTaiNguyen' => $this->input->post('TenTaiNguyen')
 			);
 			$this->ModelChung->TaoMoi($data);
-			redirect('quanly/TacGia');
+			redirect('quanly/LoaiTaiNguyen');
 		}
 		// Set title page
-        $this->smartyci->assign('title', 'Tạo Mới Tác Giả');
+        $this->smartyci->assign('title', 'Tạo Mới Loại Tài Nguyên');
 
         // Set CSS plugins
         $css_plugin = array(
@@ -90,36 +90,8 @@ class TacGia extends Admin_Controller {
         );
         $this->smartyci->assign('list_js_page',$js_page);
 
-        // Set Custom Script
-        $this->smartyci->assign('custom_script', "
-            $(document).ready(function(){
-                function generateAlias(text) {
-                    text = text.toLowerCase();
-                    text = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, \"a\");
-                    text = text.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, \"e\");
-                    text = text.replace(/ì|í|ị|ỉ|ĩ/g, \"i\");
-                    text = text.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, \"o\");
-                    text = text.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, \"u\");
-                    text = text.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, \"y\");
-                    text = text.replace(/đ/g, \"d\");
-                    text = text.replace(/'|\\\"|\\(|\\)|\\[|\\]/g, \"\");
-                    text = text.replace(/\W+/g, \"-\");
-                    if (text.slice(-1) === \"-\")
-                        text = text.replace(/-+$/, \"\");
-
-                    if (text.slice(0, 1) === \"-\")
-                        text = text.replace(/^-+/, \"\");
-
-                    return text;
-                }
-                $('#TenTacGia').on('keydown keyup blur focusout change keypress',function(){
-                    $('#slug').val(generateAlias($('#TenTacGia').val()));
-                });
-            });
-        ");
-
         // Set content page
-        $this->smartyci->assign('body', 'quanly/contents/TacGia/TaoMoi.html');
+        $this->smartyci->assign('body', 'quanly/contents/LoaiTaiNguyen/TaoMoi.html');
 
         // Set active menu
         $this->smartyci->assign('active_forms', 'active');
@@ -130,34 +102,33 @@ class TacGia extends Admin_Controller {
 	}
 
 	public function Xoa($id){
-		$DanhSach = $this->ModelChung->get_info($id);
-		if($danhsach !==FALSE){
+		$LoaiTaiNguyen = $this->ModelChung->get_info($id);
+		if($LoaiTaiNguyen!==false){
 			$this->ModelChung->delete($id);
 		}
-		redirect('quanly/tacgia');
+		redirect('quanly/loaitainguyen');
 	}
 
 	public function ChinhSua($id){
 		 // Thư vien form validation
         $this->load->library('form_validation');
 
-        $TacGia = $this->ModelChung->get_info($id);
-        if($TacGia !== FALSE) {
+        $LoaiTaiNguyen = $this->ModelChung->get_info($id);
+        if($LoaiTaiNguyen !== FALSE) {
             //
-            $this->smartyci->assign('TacGia', $TacGia);
+            $this->smartyci->assign('LoaiTaiNguyen', $LoaiTaiNguyen);
 
             // Set rules đã được tự động load ở application/config
-            if($this->form_validation->run('TacGia') == TRUE) {
+            if($this->form_validation->run('LoaiTaiNguyen') == TRUE) {
                 $data = array(
-                    'TenTacGia' => $this->input->post('TenTacGia'),
-                    'Slug' => url_title($this->ModelChung->toASCII($this->input->post('TenTacGia')), 'dash', true)
+                    'TenTaiNguyen' => $this->input->post('TenTaiNguyen')
                     );
                 $this->ModelChung->CapNhat($id,$data);
-                redirect(base_url('quanly/tacgia/'));
+                redirect(base_url('quanly/LoaiTaiNguyen/'));
             }
 
             // Set title page
-            $this->smartyci->assign('title', 'Chỉnh sửa tác giả');
+            $this->smartyci->assign('title', 'Chỉnh sửa loại tài nguyên');
 
             // Set CSS plugins
             $css_plugin = array(
@@ -178,41 +149,13 @@ class TacGia extends Admin_Controller {
             );
             $this->smartyci->assign('list_js_plugin',$js_plugin);
 
-            // Set Custom Script
-            $this->smartyci->assign('custom_script', "
-                $(document).ready(function(){
-                    function generateAlias(text) {
-                        text = text.toLowerCase();
-                        text = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, \"a\");
-                        text = text.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, \"e\");
-                        text = text.replace(/ì|í|ị|ỉ|ĩ/g, \"i\");
-                        text = text.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, \"o\");
-                        text = text.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, \"u\");
-                        text = text.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, \"y\");
-                        text = text.replace(/đ/g, \"d\");
-                        text = text.replace(/'|\\\"|\\(|\\)|\\[|\\]/g, \"\");
-                        text = text.replace(/\W+/g, \"-\");
-                        if (text.slice(-1) === \"-\")
-                            text = text.replace(/-+$/, \"\");
-
-                        if (text.slice(0, 1) === \"-\")
-                            text = text.replace(/^-+/, \"\");
-
-                        return text;
-                    }
-                    $('#TenTacGia').on('keydown keyup blur focusout change keypress',function(){
-                        $('#slug').val(generateAlias($('#TenTacGia').val()));
-                    });
-                });
-            ");
-
             // Set JS page
             $js_page = array(
                 'blankon.form.element.js'
             );
             $this->smartyci->assign('list_js_page',$js_page);
             // Set content page
-            $this->smartyci->assign('body', 'quanly/contents/TacGia/ChinhSua.html');
+            $this->smartyci->assign('body', 'quanly/contents/LoaiTaiNguyen/ChinhSua.html');
 
             // Set active menu
             $this->smartyci->assign('active_forms', 'active');
@@ -222,7 +165,7 @@ class TacGia extends Admin_Controller {
             $this->smartyci->display('quanly/contents/layout.html');
         }
         else {
-            redirect('quanly/TacGia');
+            redirect('quanly/LoaiTaiNguyen');
         }
 	}
 }

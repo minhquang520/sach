@@ -1,32 +1,32 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-23 07:57:55
-         compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\TacGia\DanhSach.html" */ ?>
-<?php /*%%SmartyHeaderCode:115365922a5b444dab3-14841020%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-23 09:42:52
+         compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\LoaiTaiNguyen\DanhSach.html" */ ?>
+<?php /*%%SmartyHeaderCode:207525923e577aafb41-16465729%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'a1679e8e0dfbd1a9bbebc005720ff6399abd4463' => 
+    '757ebe9b5cbf7003ecce437bec8d7068286415bf' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\TacGia\\DanhSach.html',
-      1 => 1495450768,
+      0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\LoaiTaiNguyen\\DanhSach.html',
+      1 => 1495525370,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '115365922a5b444dab3-14841020',
+  'nocache_hash' => '207525923e577aafb41-16465729',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5922a5b4483a58_54636971',
+  'unifunc' => 'content_5923e577dacb42_63896969',
   'variables' => 
   array (
     'danhsach' => 0,
-    'tacgia' => 0,
+    'loaitainguyen' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5922a5b4483a58_54636971')) {function content_5922a5b4483a58_54636971($_smarty_tpl) {?><!-- Start page header -->
+<?php if ($_valid && !is_callable('content_5923e577dacb42_63896969')) {function content_5923e577dacb42_63896969($_smarty_tpl) {?><!-- Start page header -->
 <div class="header-content">
-    <h2><i class="fa fa-table"></i>Danh Sách Tác Giả <span></span></h2>
+    <h2><i class="fa fa-table"></i>Danh Sách Loại Tài Nguyên <span></span></h2>
     <div class="breadcrumb-wrapper hidden-xs">
         <span class="label">You are here:</span>
         <ol class="breadcrumb">
@@ -53,8 +53,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="<?php echo base_url('quanly/tacgia/taomoi');?>
-" class="btn btn-danger btn-block btn-compose-email">Tạo tác giả</a>
+                    <a href="<?php echo base_url('quanly/loaitainguyen/taomoi');?>
+" class="btn btn-danger btn-block btn-compose-email">Tạo Loại Tài Nguyên</a>
                 </div>
                 <div class="col-md-9">
                     
@@ -64,7 +64,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="panel rounded shadow no-overflow">
                 <div class="panel-heading">
                     <div class="pull-left">
-                        <h3 class="panel-title">Thông tin danh sách tác giả</h3>
+                        <h3 class="panel-title">Thông tin danh sách Loại tài nguyên</h3>
                     </div>
                     <div class="pull-right">
                         <button class="btn btn-sm" data-action="refresh" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Refresh"><i class="fa fa-refresh"></i></button>
@@ -222,13 +222,8 @@ var BlankonTable = function () {
                     sortable: true
                 },
                 {
-                    label: 'Tên Tác Giả',
-                    property: 'TenTacGia',
-                    sortable: true
-                },
-                {
-                    label: 'Slug',
-                    property: 'Slug',
+                    label: 'Tên Tài Nguyên',
+                    property: 'TenTaiNguyen',
                     sortable: true
                 },
                 {
@@ -241,23 +236,21 @@ var BlankonTable = function () {
 
             // xuất biến dữ liệu từ danhmuc controller và view
             var products = [
-                <?php  $_smarty_tpl->tpl_vars['tacgia'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tacgia']->_loop = false;
+                <?php  $_smarty_tpl->tpl_vars['loaitainguyen'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['loaitainguyen']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['danhsach']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['tacgia']->key => $_smarty_tpl->tpl_vars['tacgia']->value) {
-$_smarty_tpl->tpl_vars['tacgia']->_loop = true;
+foreach ($_from as $_smarty_tpl->tpl_vars['loaitainguyen']->key => $_smarty_tpl->tpl_vars['loaitainguyen']->value) {
+$_smarty_tpl->tpl_vars['loaitainguyen']->_loop = true;
 ?>
                 {
-                    "id" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
+                    "id" : "<?php echo $_smarty_tpl->tpl_vars['loaitainguyen']->value->id;?>
 ",
-                    "TenTacGia" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->TenTacGia;?>
-",
-                    "Slug" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->Slug;?>
+                    "TenTaiNguyen" : "<?php echo $_smarty_tpl->tpl_vars['loaitainguyen']->value->TenTaiNguyen;?>
 ",
                     "Action" : '<a href="<?php echo base_url();?>
-QuanLy/TacGia/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
-" class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa tác giả <?php echo $_smarty_tpl->tpl_vars['tacgia']->value->TenTacGia;?>
+QuanLy/LoaiTaiNguyen/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['loaitainguyen']->value->id;?>
+" class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa loại tài nguyên <?php echo $_smarty_tpl->tpl_vars['loaitainguyen']->value->TenTaiNguyen;?>
  ?\')" href="<?php echo base_url();?>
-QuanLy/tacgia/Xoa/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
+QuanLy/LoaiTaiNguyen/Xoa/<?php echo $_smarty_tpl->tpl_vars['loaitainguyen']->value->id;?>
 " class="btn btn-sm btn-danger btn-xs btn-push"><i class="fa fa-trash"></i> Xóa</a>                                                '
                 },
                 <?php } ?>

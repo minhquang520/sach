@@ -1,32 +1,33 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-23 07:57:55
-         compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\TacGia\DanhSach.html" */ ?>
-<?php /*%%SmartyHeaderCode:115365922a5b444dab3-14841020%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-01 12:36:14
+         compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\Sach\DanhSach.html" */ ?>
+<?php /*%%SmartyHeaderCode:37592e69f36cde10-24801241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'a1679e8e0dfbd1a9bbebc005720ff6399abd4463' => 
+    '2f9d845a6aba066aa8c4c98407e9be141a416986' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\TacGia\\DanhSach.html',
-      1 => 1495450768,
+      0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\Sach\\DanhSach.html',
+      1 => 1496313373,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '115365922a5b444dab3-14841020',
+  'nocache_hash' => '37592e69f36cde10-24801241',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5922a5b4483a58_54636971',
+  'unifunc' => 'content_592e69f3b602b0_57321410',
   'variables' => 
   array (
-    'danhsach' => 0,
-    'tacgia' => 0,
+    'DanhSach' => 0,
+    'Sach' => 0,
+    'DanhSachTacGia' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5922a5b4483a58_54636971')) {function content_5922a5b4483a58_54636971($_smarty_tpl) {?><!-- Start page header -->
+<?php if ($_valid && !is_callable('content_592e69f3b602b0_57321410')) {function content_592e69f3b602b0_57321410($_smarty_tpl) {?><!-- Start page header -->
 <div class="header-content">
-    <h2><i class="fa fa-table"></i>Danh Sách Tác Giả <span></span></h2>
+    <h2><i class="fa fa-table"></i>Danh Sách <span></span></h2>
     <div class="breadcrumb-wrapper hidden-xs">
         <span class="label">You are here:</span>
         <ol class="breadcrumb">
@@ -53,8 +54,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="<?php echo base_url('quanly/tacgia/taomoi');?>
-" class="btn btn-danger btn-block btn-compose-email">Tạo tác giả</a>
+                    <a href="<?php echo base_url('quanly/Sach/taomoi');?>
+" class="btn btn-danger btn-block btn-compose-email">Tạo Mới Sách</a>
                 </div>
                 <div class="col-md-9">
                     
@@ -64,7 +65,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="panel rounded shadow no-overflow">
                 <div class="panel-heading">
                     <div class="pull-left">
-                        <h3 class="panel-title">Thông tin danh sách tác giả</h3>
+                        <h3 class="panel-title">Thông tin danh sách của sách</h3>
                     </div>
                     <div class="pull-right">
                         <button class="btn btn-sm" data-action="refresh" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Refresh"><i class="fa fa-refresh"></i></button>
@@ -222,8 +223,18 @@ var BlankonTable = function () {
                     sortable: true
                 },
                 {
-                    label: 'Tên Tác Giả',
-                    property: 'TenTacGia',
+                    label: 'Tên Sách',
+                    property: 'TenSach',
+                    sortable: true
+                },
+                {
+                    label: 'Mã Tác Giả',
+                    property: 'MaTacGia',
+                    sortable: true
+                },
+                {
+                    label: 'Năm',
+                    property: 'ThoiGianPhatHanh',
                     sortable: true
                 },
                 {
@@ -241,24 +252,34 @@ var BlankonTable = function () {
 
             // xuất biến dữ liệu từ danhmuc controller và view
             var products = [
-                <?php  $_smarty_tpl->tpl_vars['tacgia'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tacgia']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['danhsach']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['tacgia']->key => $_smarty_tpl->tpl_vars['tacgia']->value) {
-$_smarty_tpl->tpl_vars['tacgia']->_loop = true;
+                <?php  $_smarty_tpl->tpl_vars['Sach'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['Sach']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['DanhSach']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['Sach']->key => $_smarty_tpl->tpl_vars['Sach']->value) {
+$_smarty_tpl->tpl_vars['Sach']->_loop = true;
 ?>
                 {
-                    "id" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
+                    "id" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
 ",
-                    "TenTacGia" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->TenTacGia;?>
+                    "TenSach" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->TenSach;?>
 ",
-                    "Slug" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->Slug;?>
+                    "MaTacGia" : "<?php echo $_smarty_tpl->tpl_vars['DanhSachTacGia']->value[$_smarty_tpl->tpl_vars['Sach']->value->MaTacGia];?>
+",
+                    "ThoiGianPhatHanh" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->ThoiGianPhatHanh;?>
+",
+                    "MieuTaNgan" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->MieuTaNgan;?>
+",
+                    "MieuTaDai" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->MieuTaDai;?>
+",
+                    "Slug" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->Slug;?>
 ",
                     "Action" : '<a href="<?php echo base_url();?>
-QuanLy/TacGia/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
-" class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa tác giả <?php echo $_smarty_tpl->tpl_vars['tacgia']->value->TenTacGia;?>
+QuanLy/Sach/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
+" class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa dữ liệu tên sách <?php echo $_smarty_tpl->tpl_vars['Sach']->value->TenSach;?>
  ?\')" href="<?php echo base_url();?>
-QuanLy/tacgia/Xoa/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
-" class="btn btn-sm btn-danger btn-xs btn-push"><i class="fa fa-trash"></i> Xóa</a>                                                '
+QuanLy/Sach/Xoa/<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
+" class="btn btn-sm btn-danger btn-xs btn-push"><i class="fa fa-trash"></i> Xóa</a> <br /><a href="<?php echo base_url();?>
+QuanLy/TaiNguyenSach/index/<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
+" class="btn btn-sm btn-default btn-xs btn-push"><i class="fa fa-list"></i> Danh sách tài nguyên</a>                                                '
                 },
                 <?php } ?>
             ];
@@ -312,9 +333,11 @@ QuanLy/tacgia/Xoa/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
                 if(options.search){
                     search = options.search.toLowerCase();
                     items = $.grep(items, function(item){
+                        //tìm kiếm lại theo tên
                         return (
                         (item.id.toLowerCase().search(options.search)>=0) ||
-                        (item.TenTacGia.toLowerCase().search(options.search)>=0) ||
+                        (item.TenSach.toLowerCase().search(options.search)>=0) ||
+                        (item.MaTacGia.toLowerCase().search(options.search)>=0) ||
                         (item.Slug.toLowerCase().search(options.search)>=0) 
                         );
                     });

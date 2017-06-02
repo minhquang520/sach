@@ -1,32 +1,34 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-23 07:57:55
-         compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\TacGia\DanhSach.html" */ ?>
-<?php /*%%SmartyHeaderCode:115365922a5b444dab3-14841020%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-01 11:16:27
+         compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\tainguyensach\DanhSach.html" */ ?>
+<?php /*%%SmartyHeaderCode:15208592fd5e45981c1-86586333%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'a1679e8e0dfbd1a9bbebc005720ff6399abd4463' => 
+    '53938ec74422baa406cf2419a32ffdbf904037b0' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\TacGia\\DanhSach.html',
-      1 => 1495450768,
+      0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\tainguyensach\\DanhSach.html',
+      1 => 1496308584,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '115365922a5b444dab3-14841020',
+  'nocache_hash' => '15208592fd5e45981c1-86586333',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5922a5b4483a58_54636971',
+  'unifunc' => 'content_592fd5e45fa946_56364689',
   'variables' => 
   array (
-    'danhsach' => 0,
-    'tacgia' => 0,
+    'DanhSach' => 0,
+    'TaiNguyenSach' => 0,
+    'dsTenSach' => 0,
+    'dsLoaiTaiNguyen' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5922a5b4483a58_54636971')) {function content_5922a5b4483a58_54636971($_smarty_tpl) {?><!-- Start page header -->
+<?php if ($_valid && !is_callable('content_592fd5e45fa946_56364689')) {function content_592fd5e45fa946_56364689($_smarty_tpl) {?><!-- Start page header -->
 <div class="header-content">
-    <h2><i class="fa fa-table"></i>Danh Sách Tác Giả <span></span></h2>
+    <h2><i class="fa fa-table"></i>Danh Sách Tài Nguyên Sách<span></span></h2>
     <div class="breadcrumb-wrapper hidden-xs">
         <span class="label">You are here:</span>
         <ol class="breadcrumb">
@@ -53,8 +55,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="<?php echo base_url('quanly/tacgia/taomoi');?>
-" class="btn btn-danger btn-block btn-compose-email">Tạo tác giả</a>
+                    <a href="<?php echo base_url('quanly/tainguyensach/taomoi');?>
+" class="btn btn-danger btn-block btn-compose-email">Tạo Tài Nguyên Sách</a>
                 </div>
                 <div class="col-md-9">
                     
@@ -64,7 +66,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="panel rounded shadow no-overflow">
                 <div class="panel-heading">
                     <div class="pull-left">
-                        <h3 class="panel-title">Thông tin danh sách tác giả</h3>
+                        <h3 class="panel-title">Thông tin danh sách các tài nguyên của sách</h3>
                     </div>
                     <div class="pull-right">
                         <button class="btn btn-sm" data-action="refresh" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Refresh"><i class="fa fa-refresh"></i></button>
@@ -222,13 +224,18 @@ var BlankonTable = function () {
                     sortable: true
                 },
                 {
-                    label: 'Tên Tác Giả',
-                    property: 'TenTacGia',
+                    label: 'Tên Sách',
+                    property: 'MaSach',
                     sortable: true
                 },
                 {
-                    label: 'Slug',
-                    property: 'Slug',
+                    label: 'Tên Loại Tài Nguyên',
+                    property: 'MaLoaiTaiNguyen',
+                    sortable: true
+                },
+                {
+                    label: 'Tên Tài Nguyên',
+                    property: 'TenTaiNguyen',
                     sortable: true
                 },
                 {
@@ -241,23 +248,25 @@ var BlankonTable = function () {
 
             // xuất biến dữ liệu từ danhmuc controller và view
             var products = [
-                <?php  $_smarty_tpl->tpl_vars['tacgia'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tacgia']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['danhsach']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['tacgia']->key => $_smarty_tpl->tpl_vars['tacgia']->value) {
-$_smarty_tpl->tpl_vars['tacgia']->_loop = true;
+                <?php  $_smarty_tpl->tpl_vars['TaiNguyenSach'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['TaiNguyenSach']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['DanhSach']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['TaiNguyenSach']->key => $_smarty_tpl->tpl_vars['TaiNguyenSach']->value) {
+$_smarty_tpl->tpl_vars['TaiNguyenSach']->_loop = true;
 ?>
                 {
-                    "id" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
+                    "id" : "<?php echo $_smarty_tpl->tpl_vars['TaiNguyenSach']->value->id;?>
 ",
-                    "TenTacGia" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->TenTacGia;?>
+                    "MaSach" : "<?php echo $_smarty_tpl->tpl_vars['dsTenSach']->value[$_smarty_tpl->tpl_vars['TaiNguyenSach']->value->MaSach];?>
 ",
-                    "Slug" : "<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->Slug;?>
+                    "MaLoaiTaiNguyen" : "<?php echo $_smarty_tpl->tpl_vars['dsLoaiTaiNguyen']->value[$_smarty_tpl->tpl_vars['TaiNguyenSach']->value->MaLoaiTaiNguyen];?>
+",
+                    "TenTaiNguyen" : "<?php echo $_smarty_tpl->tpl_vars['TaiNguyenSach']->value->TenTaiNguyen;?>
 ",
                     "Action" : '<a href="<?php echo base_url();?>
-QuanLy/TacGia/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
-" class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa tác giả <?php echo $_smarty_tpl->tpl_vars['tacgia']->value->TenTacGia;?>
+QuanLy/TaiNguyenSach/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['TaiNguyenSach']->value->id;?>
+" class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa tài nguyên sách <?php echo $_smarty_tpl->tpl_vars['TaiNguyenSach']->value->TenTaiNguyen;?>
  ?\')" href="<?php echo base_url();?>
-QuanLy/tacgia/Xoa/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
+QuanLy/TaiNguyenSach/Xoa/<?php echo $_smarty_tpl->tpl_vars['TaiNguyenSach']->value->id;?>
 " class="btn btn-sm btn-danger btn-xs btn-push"><i class="fa fa-trash"></i> Xóa</a>                                                '
                 },
                 <?php } ?>
@@ -314,8 +323,8 @@ QuanLy/tacgia/Xoa/<?php echo $_smarty_tpl->tpl_vars['tacgia']->value->id;?>
                     items = $.grep(items, function(item){
                         return (
                         (item.id.toLowerCase().search(options.search)>=0) ||
-                        (item.TenTacGia.toLowerCase().search(options.search)>=0) ||
-                        (item.Slug.toLowerCase().search(options.search)>=0) 
+                        (item.TenTaiNguyen.toLowerCase().search(options.search)>=0) ||
+                        (item.DuongDan.toLowerCase().search(options.search)>=0) 
                         );
                     });
                 }

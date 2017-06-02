@@ -28,7 +28,7 @@
     <div class="panel rounded shadow">
         <div class="panel-heading">
             <div class="pull-left">
-                <h3 class="panel-title">Thông Tin Tác Giả</h3>
+                <h3 class="panel-title">Thông Tin Tài Nguyên Sách</h3>
             </div>
             <div class="pull-right">
                 <button class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse"><i class="fa fa-angle-up"></i></button>
@@ -50,26 +50,48 @@
                 {form_open(current_url(),'method="POST"')}
                 <div class="form-body">
                     <div class="form-group">
-                        <label class="control-label">Tên Tác Giả</label>
-                        {$Input_TenTacGia=[
-                            'name' => 'TenTacGia',
-                            'id' => 'TenTacGia',
-                            'value' => set_value('TenTacGia'),
-                            'class' => 'form-control',
-                            'type' => 'text']}
-                            {form_input($Input_TenTacGia)}
-
+                        <label class="control-label">Mã Sách</label>
+                        {$Input_MaSach = [
+                        'id' => 'MaSach',
+                        'class' => 'form-control input-sm mb-15']}  
+                        {form_dropdown('MaSach',$dsSach, set_value('MaSach'),$Input_MaSach)}
                     </div><!-- /.form-group -->
 
                     <div class="form-group">
-                        <label class="control-label" for="readonlyinput1">Slug</label>
-                        <input value="" id="slug" class="form-control" readonly="readonly" type="text">
+                        <label class="control-label">Mã Loại Tài Nguyên</label>
+                        {$Input_MaLoaiTaiNguyen = [
+                        'id' => 'MaLoaiTaiNguyen',
+                        'class' => 'form-control input-sm mb-15']}  
+                        {form_dropdown('MaLoaiTaiNguyen',$dsLoaiTaiNguyen, set_value('MaLoaiTaiNguyen'),$Input_MaLoaiTaiNguyen)}
                     </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-label">Tên Tài Nguyên</label>
+                        {$Input_TenTaiNguyen=[
+                            'name' => 'TenTaiNguyen',
+                            'id' => 'TenTaiNguyen',
+                            'value' => set_value('TenTaiNguyen'),
+                            'class' => 'form-control',
+                            'type' => 'text']}
+                            {form_input($Input_TenTaiNguyen)}
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-label">Đường Dẫn</label>
+                        {$Input_DuongDan=[
+                            'name' => 'DuongDan',
+                            'id' => 'DuongDan',
+                            'value' => set_value('DuongDan'),
+                            'class' => 'form-control',
+                            'type' => 'text']}
+                            {form_input($Input_DuongDan)}
+                    </div><!-- /.form-group -->
+
                 </div><!-- /.form-body -->
                 <div class="form-footer">
                     <div class="pull-left">
                         <button class="btn btn-success" type="submit">Submit</button>
-                        <a href="{base_url('quanly/tacgia')}" class="btn btn-danger mr-5">Cancel</a>
+                        <a href="{base_url('quanly/tainguyensach')}" class="btn btn-danger mr-5">Cancel</a>
                     </div>
                     <div class="clearfix"></div>
                 </div><!-- /.form-footer -->

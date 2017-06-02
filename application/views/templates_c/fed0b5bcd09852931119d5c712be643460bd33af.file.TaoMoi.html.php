@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-21 12:35:49
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-23 08:51:46
          compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\DanhMuc\TaoMoi.html" */ ?>
 <?php /*%%SmartyHeaderCode:6201592123b44f1d02-00929732%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fed0b5bcd09852931119d5c712be643460bd33af' => 
     array (
       0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\DanhMuc\\TaoMoi.html',
-      1 => 1495362945,
+      1 => 1495450183,
       2 => 'file',
     ),
   ),

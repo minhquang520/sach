@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-22 12:47:13
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-01 11:22:44
          compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\TacGia\ChinhSua.html" */ ?>
 <?php /*%%SmartyHeaderCode:249245922b99a8be028-24153888%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e88d86074fe8382fb21c74f6faa500ff26d04c59' => 
     array (
       0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\TacGia\\ChinhSua.html',
-      1 => 1495450011,
+      1 => 1495526364,
       2 => 'file',
     ),
   ),
