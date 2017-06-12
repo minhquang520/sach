@@ -6,9 +6,10 @@ class Sach extends Admin_Controller {
 		$this->load->database();
 		$this->load->model('ModelChung','ModelTacGia');
 		$this->load->model('ModelChung','ModelSach');
+		$this->load->model('ModelChung','ModelDanhMuc');
 		$this->ModelTacGia->set_table('TacGia');
 		$this->ModelSach->set_table('Sach');
-
+		$this->ModelDanhMuc->set_table('DanhMuc');
 	}
 	public function index(){
 
@@ -19,15 +20,21 @@ class Sach extends Admin_Controller {
         $tempTacGia = $this->ModelTacGia->get_list();
         $dsTacGia = array();
         $dsTacGiac[-1] = "Không có";
+
         foreach ($tempTacGia as $key => $value) {
         $dsTacGiac[$value->id] = $value->TenTacGia;
         }
-
         // var_dump($dsTacGiac);exit();
         $this->smartyci->assign('DanhSachTacGia', $dsTacGiac);
 
-        // Set title page
-        $this->smartyci->assign('title', 'DATATABLE');
+        $tempDanhMuc = $this->ModelDanhMuc->get_list();
+        $dsDanhMucNe = array();
+        $dsDanhMuc[-1] = "Không có";
+
+        foreach ($tempDanhMuc as $key => $value) {
+        $dsDanhMuc[$value->id] = $value->TenDanhMuc;
+        }
+        $this->smartyci->assign('DanhSachDanhMuc', $dsDanhMuc);
 
         // Set CSS plugins
         $css_plugin = array(
@@ -93,17 +100,17 @@ class Sach extends Admin_Controller {
 	                $data = array(
 						'TenSach' => $this->input->post('TenSach'),
 						'MaTacGia' => $this->input->post('MaTacGia'),
+						'MaDanhMuc' =>$this->input->post('MaDanhMuc'),
 						'MieuTaNgan' => $this->input->post('MieuTaNgan'),
 						'MieuTaDai' => $this->input->post('MieuTaDai'),
 						'ThoiGianDang' => date("Y-m-d H:i:s"),
 						'ThoiGianPhatHanh' => $this->input->post('ThoiGianPhatHanh'),
 						'Slug' => url_title($this->ModelSach->toASCII($this->input->post('TenSach')), 'dash', true),
 						'HinhAnhSach' => $sach['file_name']
-
 					);
 					$this->ModelSach->TaoMoi($data);
 	        }
-	        redirect(current_url());
+	        redirect('quanly/Sach');
 			// 
 		}
 
@@ -115,6 +122,12 @@ class Sach extends Admin_Controller {
         }
         //tạo dsSach
         $this->smartyci->assign('dsSach',$dsSach);
+
+        $dsDanhMuc = array();
+        foreach ($this->ModelDanhMuc->get_list() as $key => $value) {
+        	$dsDanhMuc [$value->id] = $value->TenDanhMuc;
+        }
+        $this->smartyci->assign('dsDanhMuc',$dsDanhMuc);
 
 
 		// Set title page
@@ -228,6 +241,7 @@ class Sach extends Admin_Controller {
 			$data = array(
 				'TenSach' => $this->input->post('TenSach'),
 				'MaTacGia' => $this->input->post('MaTacGia'),
+				'MaDanhMuc' =>$this->input->post('MaDanhMuc'),
 				'MieuTaNgan' => $this->input->post('MieuTaNgan'),
 				'MieuTaDai' => $this->input->post('MieuTaDai'),
 				'ThoiGianDang' => date("Y-m-d H:i:s"),
@@ -235,8 +249,7 @@ class Sach extends Admin_Controller {
 				'Slug' => url_title($this->ModelSach->toASCII($this->input->post('TenSach')), 'dash', true)
 			);
 
-			// 
-		
+			
 			$config['upload_path']          = './uploads/';
 	        $config['allowed_types']        = 'gif|jpg|png';
 	        $config['max_size']             = 2048;
@@ -272,6 +285,13 @@ class Sach extends Admin_Controller {
 	        //tạo dsSach
 	        $this->smartyci->assign('dsSach',$dsSach);
 
+	         $dsDanhMuc = array();
+        	// Model Load Danh sách danh mục
+        	foreach ($this->ModelDanhMuc->get_list() as $key => $value) {
+        		$dsDanhMuc [$value->id] = $value->TenDanhMuc;
+        	}
+        	//tạo dsSach
+        	$this->smartyci->assign('dsDanhMuc',$dsDanhMuc);
 
 			// Set title page
 	        $this->smartyci->assign('title', 'Tạo Mới Sách');

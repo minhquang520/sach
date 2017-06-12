@@ -76,7 +76,8 @@
 		public function TaoMoi($data) {
 			if($this->db->insert($this->table, $data))
 			{ 
-				return TRUE; 
+				$insert_id = $this->db->insert_id();
+				return $insert_id; 
 			}
 			else { 
 				return FALSE; 
@@ -128,17 +129,14 @@
 		function get_list($input = array())
 		{
 		            //gắn các tùy chọn nếu có
-		    $this->get_list_set_input($input);
-		    //thuc hien truy van du lieu
-		    $query = $this->db->get($this->table);
-		            //tra ve du lieu
-		    return $query->result();
+		    return $this->get_list_set_input($input);
+		    
 		}
 		 
 		/**
 		* Gan cac thuoc tinh trong input khi lay danh sach
 		*/
-		protected function get_list_set_input($input)
+		public function get_list_set_input($input)
 		{
 		     // Select
 			 if (isset($input['select']))
@@ -167,6 +165,11 @@
 		    {
 		        $this->db->limit($input['limit'][0], $input['limit'][1]);
 		    }    
+			
+			//thuc hien truy van du lieu
+		    $query = $this->db->get($this->table);
+		            //tra ve du lieu
+		    return $query->result();
 		}
 		public function toASCII($str) {
 	        if(!$str) return false;

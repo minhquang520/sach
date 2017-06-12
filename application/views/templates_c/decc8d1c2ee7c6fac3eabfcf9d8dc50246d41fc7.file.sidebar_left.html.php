@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-05-21 07:20:14
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-02 06:33:09
          compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\partials\sidebar_left.html" */ ?>
 <?php /*%%SmartyHeaderCode:278125921238e0f2484-76851850%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'decc8d1c2ee7c6fac3eabfcf9d8dc50246d41fc7' => 
     array (
       0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\partials\\sidebar_left.html',
-      1 => 1495175046,
+      1 => 1496377986,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5921238e2d7146_12480642',
   'variables' => 
   array (
     'active_dashboard' => 0,
@@ -45,8 +47,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'active_form_layout' => 0,
     'active_form_validation' => 0,
     'active_form_wizard' => 0,
-    'active_form_wysiwyg' => 0,
-    'active_form_xeditable' => 0,
     'active_tables' => 0,
     'active_table_default' => 0,
     'active_table_color' => 0,
@@ -85,8 +85,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'active_widget_misc' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5921238e2d7146_12480642',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5921238e2d7146_12480642')) {function content_5921238e2d7146_12480642($_smarty_tpl) {?><aside id="sidebar-left" class="sidebar-circle">
 
@@ -264,34 +262,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  <?php }?>">
     <a href="javascript:void(0);">
         <span class="icon"><i class="fa fa-list-alt"></i></span>
-        <span class="text">Forms</span>
+        <span class="text">Menu</span>
         <span class="arrow"></span>
         <?php if (isset($_smarty_tpl->tpl_vars['active_forms']->value)) {?> <?php echo '<span class="selected"></span>';?>
  <?php }?>
     </a>
     <ul>
         <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_element']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_element']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-element');?>
-">Element</a></li>
+ <?php }?>"><a href="<?php echo base_url('quanly/DanhMuc');?>
+">Danh Mục</a></li>
         <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_advanced']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_advanced']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-advanced');?>
-">Advanced</a></li>
+ <?php }?>"><a href="<?php echo base_url('quanly/Sach');?>
+">Sách</a></li>
         <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_layout']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_layout']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-layout');?>
-">Layout</a></li>
+ <?php }?>"><a href="<?php echo base_url('quanly/tacgia');?>
+">Tác Giả</a></li>
         <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_validation']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_validation']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-validation');?>
-">Validation</a></li>
+ <?php }?>"><a href="<?php echo base_url('quanly/LoaiTaiNguyen');?>
+">Loại Tài Nguyên</a></li>
         <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_wizard']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_wizard']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-wizard');?>
-">Wizard</a></li>
-        <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_wysiwyg']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_wysiwyg']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-wysiwyg');?>
-">Text Editor</a></li>
-        <li class="<?php if (isset($_smarty_tpl->tpl_vars['active_form_xeditable']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['active_form_xeditable']->value;?>
- <?php }?>"><a href="<?php echo base_url('quanly/forms/form-xeditable');?>
-">X-Editable</a></li>
-    </ul>
+ <?php }?>"><a href="<?php echo base_url('quanly/tainguyensach');?>
+">Tài Nguyên Sách</a></li>
 </li>
 <!--/ End navigation - forms -->
 

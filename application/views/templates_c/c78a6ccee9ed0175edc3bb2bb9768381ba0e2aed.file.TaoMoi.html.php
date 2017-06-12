@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-01 08:48:29
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-07 10:29:13
          compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\Sach\TaoMoi.html" */ ?>
 <?php /*%%SmartyHeaderCode:6865923f6dfc00670-44916451%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c78a6ccee9ed0175edc3bb2bb9768381ba0e2aed' => 
     array (
       0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\Sach\\TaoMoi.html',
-      1 => 1496299645,
+      1 => 1496824142,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'title' => 0,
     'Input_TenSach' => 0,
+    'dsDanhMuc' => 0,
+    'Input_MaDanhMuc' => 0,
     'dsSach' => 0,
     'Input_MaTacGia' => 0,
     'Input_ThoiGianPhatHanh' => 0,
@@ -97,7 +99,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </div><!-- /.form-group -->
                     
                     <div class="form-group">
-                        <label class="control-label">Mã Tác Giả</label>
+                        <label class="control-label">Tên Danh Mục</label>
+                        <?php $_smarty_tpl->tpl_vars['Input_MaDanhMuc'] = new Smarty_variable(array('id'=>'MaDanhMuc','class'=>'form-control input-sm mb-15'), null, 0);?>  
+                        <?php echo form_dropdown('MaDanhMuc',$_smarty_tpl->tpl_vars['dsDanhMuc']->value,set_value('MaDanhMuc'),$_smarty_tpl->tpl_vars['Input_MaDanhMuc']->value);?>
+
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-label">Tên Tác Giả</label>
                         <?php $_smarty_tpl->tpl_vars['Input_MaTacGia'] = new Smarty_variable(array('id'=>'MaTacGia','class'=>'form-control input-sm mb-15'), null, 0);?>  
                         <?php echo form_dropdown('MaTacGia',$_smarty_tpl->tpl_vars['dsSach']->value,set_value('MaTacGia'),$_smarty_tpl->tpl_vars['Input_MaTacGia']->value);?>
 

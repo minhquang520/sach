@@ -59,6 +59,14 @@
                         'type' => 'text']}
                         {form_input($Input_TenSach)}
                     </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-label">Tên Danh Mục</label>
+                        {$Input_MaDanhMuc = [
+                        'id' => 'MaDanhMuc',
+                        'class' => 'form-control input-sm mb-15']}  
+                        {form_dropdown('MaDanhMuc',$dsDanhMuc, $Sach->MaDanhMuc,$Input_MaDanhMuc)}
+                    </div><!-- /.form-group -->
                     
                     <div class="form-group">
                         <label class="control-label">Mã Tác Giả</label>

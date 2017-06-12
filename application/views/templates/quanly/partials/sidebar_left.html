@@ -123,19 +123,16 @@
 <li class="submenu {if isset($active_forms)} {$active_forms} {/if}">
     <a href="javascript:void(0);">
         <span class="icon"><i class="fa fa-list-alt"></i></span>
-        <span class="text">Forms</span>
+        <span class="text">Menu</span>
         <span class="arrow"></span>
         {if isset($active_forms)} {'<span class="selected"></span>'} {/if}
     </a>
     <ul>
-        <li class="{if isset($active_form_element)} {$active_form_element} {/if}"><a href="{base_url('quanly/forms/form-element')}">Element</a></li>
-        <li class="{if isset($active_form_advanced)} {$active_form_advanced} {/if}"><a href="{base_url('quanly/forms/form-advanced')}">Advanced</a></li>
-        <li class="{if isset($active_form_layout)} {$active_form_layout} {/if}"><a href="{base_url('quanly/forms/form-layout')}">Layout</a></li>
-        <li class="{if isset($active_form_validation)} {$active_form_validation} {/if}"><a href="{base_url('quanly/forms/form-validation')}">Validation</a></li>
-        <li class="{if isset($active_form_wizard)} {$active_form_wizard} {/if}"><a href="{base_url('quanly/forms/form-wizard')}">Wizard</a></li>
-        <li class="{if isset($active_form_wysiwyg)} {$active_form_wysiwyg} {/if}"><a href="{base_url('quanly/forms/form-wysiwyg')}">Text Editor</a></li>
-        <li class="{if isset($active_form_xeditable)} {$active_form_xeditable} {/if}"><a href="{base_url('quanly/forms/form-xeditable')}">X-Editable</a></li>
-    </ul>
+        <li class="{if isset($active_form_element)} {$active_form_element} {/if}"><a href="{base_url('quanly/DanhMuc')}">Danh Mục</a></li>
+        <li class="{if isset($active_form_advanced)} {$active_form_advanced} {/if}"><a href="{base_url('quanly/Sach')}">Sách</a></li>
+        <li class="{if isset($active_form_layout)} {$active_form_layout} {/if}"><a href="{base_url('quanly/tacgia')}">Tác Giả</a></li>
+        <li class="{if isset($active_form_validation)} {$active_form_validation} {/if}"><a href="{base_url('quanly/LoaiTaiNguyen')}">Loại Tài Nguyên</a></li>
+        <li class="{if isset($active_form_wizard)} {$active_form_wizard} {/if}"><a href="{base_url('quanly/tainguyensach')}">Tài Nguyên Sách</a></li>
 </li>
 <!--/ End navigation - forms -->
 

@@ -13,7 +13,7 @@ class DanhMuc extends Admin_Controller {
 
         // Get list từ modelchung
         $tempDanhMuc = $this->ModelChung->get_list();
-        $dsDanhMuc = array();
+        $dsDanhMucNe = array();
         $dsDanhMuc[-1] = "Không có";
         foreach ($tempDanhMuc as $key => $value) {
             $dsDanhMuc[$value->id] = $value->TenDanhMuc;

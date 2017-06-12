@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-01 12:36:14
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-07 12:07:02
          compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\Sach\DanhSach.html" */ ?>
 <?php /*%%SmartyHeaderCode:37592e69f36cde10-24801241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2f9d845a6aba066aa8c4c98407e9be141a416986' => 
     array (
       0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\Sach\\DanhSach.html',
-      1 => 1496313373,
+      1 => 1496830021,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'DanhSach' => 0,
     'Sach' => 0,
+    'DanhSachDanhMuc' => 0,
     'DanhSachTacGia' => 0,
   ),
   'has_nocache_code' => false,
@@ -43,8 +44,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </li>
             <li class="active">Datatable</li>
         </ol>
-    </div><!-- /.breadcrumb-wrapper -->
-</div><!-- /.header-content -->
+    </div>
+    <!-- /.breadcrumb-wrapper -->
+</div>
+<!-- /.header-content -->
 <!--/ End page header -->
 
 <!-- Start body content -->
@@ -58,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " class="btn btn-danger btn-block btn-compose-email">Tạo Mới Sách</a>
                 </div>
                 <div class="col-md-9">
-                    
+
                 </div>
             </div>
             <!-- Start repeater -->
@@ -73,7 +76,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <button class="btn btn-sm" data-action="remove" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
                     </div>
                     <div class="clearfix"></div>
-                </div><!-- /.panel-heading -->
+                </div>
+                <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- Start repeater -->
                     <div class="fuelux">
@@ -82,17 +86,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <div class="repeater-header-left">
                                     <div class="repeater-search">
                                         <div class="search input-group">
-                                            <input type="search" class="form-control" placeholder="Tìm Kiếm"/>
-                                                          <span class="input-group-btn">
+                                            <input type="search" class="form-control" placeholder="Tìm Kiếm" />
+                                            <span class="input-group-btn">
                                                             <button class="btn btn-default" type="button">
                                                                 <span class="glyphicon glyphicon-search"></span>
-                                                                <span class="sr-only">Search</span>
-                                                            </button>
-                                                          </span>
+                                            <span class="sr-only">Search</span>
+                                            </button>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="repeater-viewport">
                                 <div class="repeater-canvas"></div>
@@ -115,7 +119,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                                 <li data-value="50" data-foo="bar" data-fizz="buzz"><a href="#">50</a></li>
                                                 <li data-value="100"><a href="#">100</a></li>
                                             </ul>
-                                            <input class="hidden hidden-field" name="itemsPerPage" readonly="readonly" aria-hidden="true" type="text"/>
+                                            <input class="hidden hidden-field" name="itemsPerPage" readonly="readonly" aria-hidden="true" type="text" />
                                         </div>
                                         <span>mỗi trang</span>
                                     </div>
@@ -151,128 +155,133 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         </div>
                     </div>
                     <!--/ End repeater -->
-                </div><!-- /.panel-body -->
-            </div><!-- /.panel -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
             <!--/ End repeater -->
-        </div><!-- /.col-md-12 -->
-    </div><!-- /.row -->
-</div><!-- /.body-content -->
+        </div>
+        <!-- /.col-md-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.body-content -->
 <!--/ End body content -->
 
 <?php echo '<script'; ?>
  type="text/javascript">
     'use strict';
-var BlankonTable = function () {
+    var BlankonTable = function() {
 
-    // =========================================================================
-    // SETTINGS APP
-    // =========================================================================
-    //var globalPluginsPath = BlankonApp.handleBaseURL()+'/assets/global/plugins/bower_components';
+            // =========================================================================
+            // SETTINGS APP
+            // =========================================================================
+            //var globalPluginsPath = BlankonApp.handleBaseURL()+'/assets/global/plugins/bower_components';
 
-    return {
+            return {
 
-        // =========================================================================
-        // CONSTRUCTOR APP
-        // =========================================================================
-        init: function () {
-            BlankonTable.datatable();
-        },
-
-        // =========================================================================
-        // DATATABLE
-        // =========================================================================
-        datatable: function () {
-            var responsiveHelperAjax = undefined;
-            var responsiveHelperDom = undefined;
-            var breakpointDefinition = {
-                tablet: 1024,
-                phone : 480
-            };
-
-            var tableAjax = $('#datatable-ajax');
-            var tableDom = $('#datatable-dom');
-
-            
-
-            // Using DOM
-            // Remove arrow datatable
-            // $.extend( true, $.fn.dataTable.defaults, {
-            //     "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0, 1, 2, 5 ] } ]
-            // } );
-            tableDom.dataTable({
-                autoWidth        : false,
-                preDrawCallback: function () {
-                    // Initialize the responsive datatables helper once.
-                    if (!responsiveHelperDom) {
-                        responsiveHelperDom = new ResponsiveDatatablesHelper(tableDom, breakpointDefinition);
-                    }
+                // =========================================================================
+                // CONSTRUCTOR APP
+                // =========================================================================
+                init: function() {
+                    BlankonTable.datatable();
                 },
-                rowCallback    : function (nRow) {
-                    responsiveHelperDom.createExpandIcon(nRow);
-                },
-                drawCallback   : function (oSettings) {
-                    responsiveHelperDom.respond();
-                }
-            });
 
-            // Repeater //Tạo tên id và cột
-            var columns = [
-                {
-                    label: 'ID',
-                    property: 'id',
-                    sortable: true
-                },
-                {
-                    label: 'Tên Sách',
-                    property: 'TenSach',
-                    sortable: true
-                },
-                {
-                    label: 'Mã Tác Giả',
-                    property: 'MaTacGia',
-                    sortable: true
-                },
-                {
-                    label: 'Năm',
-                    property: 'ThoiGianPhatHanh',
-                    sortable: true
-                },
-                {
-                    label: 'Slug',
-                    property: 'Slug',
-                    sortable: true
-                },
-                {
-                    label: 'Action',
-                    property: 'Action',
-                    sortable: false
-                }
-            ];
-            var delays = ['300', '600', '900', '1200'];
+                // =========================================================================
+                // DATATABLE
+                // =========================================================================
+                datatable: function() {
+                    var responsiveHelperAjax = undefined;
+                    var responsiveHelperDom = undefined;
+                    var breakpointDefinition = {
+                        tablet: 1024,
+                        phone: 480
+                    };
 
-            // xuất biến dữ liệu từ danhmuc controller và view
-            var products = [
-                <?php  $_smarty_tpl->tpl_vars['Sach'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['Sach']->_loop = false;
+                    var tableAjax = $('#datatable-ajax');
+                    var tableDom = $('#datatable-dom');
+
+
+
+                    // Using DOM
+                    // Remove arrow datatable
+                    // $.extend( true, $.fn.dataTable.defaults, {
+                    //     "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0, 1, 2, 5 ] } ]
+                    // } );
+                    tableDom.dataTable({
+                        autoWidth: false,
+                        preDrawCallback: function() {
+                            // Initialize the responsive datatables helper once.
+                            if (!responsiveHelperDom) {
+                                responsiveHelperDom = new ResponsiveDatatablesHelper(tableDom, breakpointDefinition);
+                            }
+                        },
+                        rowCallback: function(nRow) {
+                            responsiveHelperDom.createExpandIcon(nRow);
+                        },
+                        drawCallback: function(oSettings) {
+                            responsiveHelperDom.respond();
+                        }
+                    });
+
+                    // Repeater //Tạo tên id và cột
+                    var columns = [{
+                        label: 'ID',
+                        property: 'id',
+                        sortable: true
+                    }, 
+                    {
+                        label: 'Tên Sách',
+                        property: 'TenSach',
+                        sortable: true
+                    }, {
+                        label: 'Tên Tác Giả',
+                        property: 'MaTacGia',
+                        sortable: true
+                    }, {
+                        label: 'Năm',
+                        property: 'ThoiGianPhatHanh',
+                        sortable: true
+                    }, {
+                        label: 'Tên Danh Mục',
+                        property: 'MaDanhMuc',
+                        sortable: true
+                    }, {
+                        label: 'Slug',
+                        property: 'Slug',
+                        sortable: true
+                    }, {
+                        label: 'Action',
+                        property: 'Action',
+                        sortable: false
+                    }];
+                    var delays = ['300', '600', '900', '1200'];
+
+                    // xuất biến dữ liệu từ danhmuc controller và view
+                    var products = [
+                        <?php  $_smarty_tpl->tpl_vars['Sach'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['Sach']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['DanhSach']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['Sach']->key => $_smarty_tpl->tpl_vars['Sach']->value) {
 $_smarty_tpl->tpl_vars['Sach']->_loop = true;
 ?>
-                {
-                    "id" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
+                        {
+                            "id": "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
 ",
-                    "TenSach" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->TenSach;?>
+                            "TenSach": "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->TenSach;?>
 ",
-                    "MaTacGia" : "<?php echo $_smarty_tpl->tpl_vars['DanhSachTacGia']->value[$_smarty_tpl->tpl_vars['Sach']->value->MaTacGia];?>
+                            "MaDanhMuc": "<?php echo $_smarty_tpl->tpl_vars['DanhSachDanhMuc']->value[$_smarty_tpl->tpl_vars['Sach']->value->MaDanhMuc];?>
 ",
-                    "ThoiGianPhatHanh" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->ThoiGianPhatHanh;?>
+                            "MaTacGia": "<?php echo $_smarty_tpl->tpl_vars['DanhSachTacGia']->value[$_smarty_tpl->tpl_vars['Sach']->value->MaTacGia];?>
 ",
-                    "MieuTaNgan" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->MieuTaNgan;?>
+                            "ThoiGianPhatHanh": "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->ThoiGianPhatHanh;?>
 ",
-                    "MieuTaDai" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->MieuTaDai;?>
+                            "MieuTaNgan": "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->MieuTaNgan;?>
 ",
-                    "Slug" : "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->Slug;?>
+                            "MieuTaDai": "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->MieuTaDai;?>
 ",
-                    "Action" : '<a href="<?php echo base_url();?>
+                            "Slug": "<?php echo $_smarty_tpl->tpl_vars['Sach']->value->Slug;?>
+",
+                            "Action": '<a href="<?php echo base_url();?>
 QuanLy/Sach/ChinhSua/<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
 " class="btn btn-sm btn-primary btn-xs btn-push"><i class="fa fa-pencil"></i> Sửa</a>                                                    <a onclick="return confirm(\'Sẽ xóa dữ liệu tên sách <?php echo $_smarty_tpl->tpl_vars['Sach']->value->TenSach;?>
  ?\')" href="<?php echo base_url();?>
@@ -280,96 +289,96 @@ QuanLy/Sach/Xoa/<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
 " class="btn btn-sm btn-danger btn-xs btn-push"><i class="fa fa-trash"></i> Xóa</a> <br /><a href="<?php echo base_url();?>
 QuanLy/TaiNguyenSach/index/<?php echo $_smarty_tpl->tpl_vars['Sach']->value->id;?>
 " class="btn btn-sm btn-default btn-xs btn-push"><i class="fa fa-list"></i> Danh sách tài nguyên</a>                                                '
-                },
-                <?php } ?>
-            ];
-            var dataSource, filtering;
+                        }, 
+                        <?php } ?>
+                    ];
+                        var dataSource, filtering;
 
-            dataSource = function(options, callback){
-                var items = filtering(options);
-                var resp = {
-                    count: items.length,
-                    items: [],
-                    page: options.pageIndex,
-                    pages: Math.ceil(items.length/(options.pageSize || 50))
+                        dataSource = function(options, callback) {
+                            var items = filtering(options);
+                            var resp = {
+                                count: items.length,
+                                items: [],
+                                page: options.pageIndex,
+                                pages: Math.ceil(items.length / (options.pageSize || 50))
+                            };
+                            var i, items, l;
+
+                            i = options.pageIndex * (options.pageSize || 50);
+                            l = i + (options.pageSize || 50);
+                            l = (l <= resp.count) ? l : resp.count;
+                            resp.start = i + 1;
+                            resp.end = l;
+
+                            if (options.view === 'list' || options.view === 'thumbnail') {
+                                if (options.view === 'list') {
+                                    resp.columns = columns;
+                                    for (i; i < l; i++) {
+                                        resp.items.push(items[i]);
+                                    }
+                                } else {
+                                    for (i; i < l; i++) {
+                                        resp.items.push({
+                                            name: items[i].name,
+                                            src: items[i].ThumbnailImage
+                                        });
+                                    }
+                                }
+
+                                setTimeout(function() {
+                                    callback(resp);
+                                }, delays[Math.floor(Math.random() * 4)]);
+                            }
+                        };
+
+                        filtering = function(options) {
+                            var items = $.extend([], products);
+                            var search;
+                            if (options.filter.value !== 'all') {
+                                items = $.grep(items, function(item) {
+                                    return (item.type.search(options.filter.value) >= 0);
+                                });
+                            }
+                            if (options.search) {
+                                search = options.search.toLowerCase();
+                                items = $.grep(items, function(item) {
+                                    //tìm kiếm lại theo tên
+                                    return (
+                                        (item.id.toLowerCase().search(options.search) >= 0) ||
+                                        (item.TenSach.toLowerCase().search(options.search) >= 0) ||
+                                        (item.MaTacGia.toLowerCase().search(options.search) >= 0) ||
+                                        (item.Slug.toLowerCase().search(options.search) >= 0)
+                                    );
+                                });
+                            }
+                            if (options.sortProperty) {
+                                items = $.grep(items, function(item) {
+                                    if (options.sortProperty === 'id' || options.sortProperty === 'height' || options.sortProperty === 'weight') {
+                                        return parseFloat(item[options.sortProperty]);
+                                    } else {
+                                        return item[options.sortProperty];
+                                    }
+                                });
+                                if (options.sortDirection === 'desc') {
+                                    items.reverse();
+                                }
+                            }
+
+                            return items;
+                        };
+
+                        // REPEATER //chạy kiểu danh sách
+
+                        $('#myRepeaterDanhSach').repeater({
+                            dataSource: dataSource
+                        });
+                    }
+
                 };
-                var i, items, l;
 
-                i = options.pageIndex * (options.pageSize || 50);
-                l = i + (options.pageSize || 50);
-                l = (l <= resp.count) ? l : resp.count;
-                resp.start = i + 1;
-                resp.end = l;
+            }();
 
-                if(options.view==='list' || options.view==='thumbnail'){
-                    if(options.view==='list'){
-                        resp.columns = columns;
-                        for(i; i<l; i++){
-                            resp.items.push(items[i]);
-                        }
-                    }else{
-                        for(i; i<l; i++){
-                            resp.items.push({
-                                name: items[i].name,
-                                src: items[i].ThumbnailImage
-                            });
-                        }
-                    }
-
-                    setTimeout(function(){
-                        callback(resp);
-                    }, delays[Math.floor(Math.random() * 4)]);
-                }
-            };
-
-            filtering = function(options){
-                var items = $.extend([], products);
-                var search;
-                if(options.filter.value!=='all'){
-                    items = $.grep(items, function(item){
-                        return (item.type.search(options.filter.value)>=0);
-                    });
-                }
-                if(options.search){
-                    search = options.search.toLowerCase();
-                    items = $.grep(items, function(item){
-                        //tìm kiếm lại theo tên
-                        return (
-                        (item.id.toLowerCase().search(options.search)>=0) ||
-                        (item.TenSach.toLowerCase().search(options.search)>=0) ||
-                        (item.MaTacGia.toLowerCase().search(options.search)>=0) ||
-                        (item.Slug.toLowerCase().search(options.search)>=0) 
-                        );
-                    });
-                }
-                if(options.sortProperty){
-                    items = $.grep(items, function(item){
-                        if(options.sortProperty==='id' || options.sortProperty==='height' || options.sortProperty==='weight'){
-                            return parseFloat(item[options.sortProperty]);
-                        }else{
-                            return item[options.sortProperty];
-                        }
-                    });
-                    if(options.sortDirection==='desc'){
-                        items.reverse();
-                    }
-                }
-
-                return items;
-            };
-
-            // REPEATER //chạy kiểu danh sách
-
-            $('#myRepeaterDanhSach').repeater({
-                dataSource: dataSource
-            });
-        }
-
-    };
-
-}();
-
-// Call main app init
-BlankonTable.init();
+            // Call main app init
+            BlankonTable.init();
 <?php echo '</script'; ?>
 ><?php }} ?>

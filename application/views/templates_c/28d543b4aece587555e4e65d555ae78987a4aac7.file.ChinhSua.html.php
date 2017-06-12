@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-01 12:33:40
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2017-06-08 08:08:56
          compiled from "D:\xampp\htdocs\sach\application\views\templates\quanly\contents\Sach\ChinhSua.html" */ ?>
 <?php /*%%SmartyHeaderCode:1133592e7c29e9eb17-12512137%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '28d543b4aece587555e4e65d555ae78987a4aac7' => 
     array (
       0 => 'D:\\xampp\\htdocs\\sach\\application\\views\\templates\\quanly\\contents\\Sach\\ChinhSua.html',
-      1 => 1496299566,
+      1 => 1496902134,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'title' => 0,
     'Sach' => 0,
     'Input_TenSach' => 0,
+    'dsDanhMuc' => 0,
+    'Input_MaDanhMuc' => 0,
     'dsSach' => 0,
     'Input_MaTacGia' => 0,
     'Input_ThoiGianPhatHanh' => 0,
@@ -90,6 +92,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <label class="control-label">Tên Sách</label>
                         <?php $_smarty_tpl->tpl_vars['Input_TenSach'] = new Smarty_variable(array('name'=>'TenSach','id'=>'TenSach','value'=>$_smarty_tpl->tpl_vars['Sach']->value->TenSach,'class'=>'form-control','type'=>'text'), null, 0);?>
                         <?php echo form_input($_smarty_tpl->tpl_vars['Input_TenSach']->value);?>
+
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-label">Tên Danh Mục</label>
+                        <?php $_smarty_tpl->tpl_vars['Input_MaDanhMuc'] = new Smarty_variable(array('id'=>'MaDanhMuc','class'=>'form-control input-sm mb-15'), null, 0);?>  
+                        <?php echo form_dropdown('MaDanhMuc',$_smarty_tpl->tpl_vars['dsDanhMuc']->value,$_smarty_tpl->tpl_vars['Sach']->value->MaDanhMuc,$_smarty_tpl->tpl_vars['Input_MaDanhMuc']->value);?>
 
                     </div><!-- /.form-group -->
                     
